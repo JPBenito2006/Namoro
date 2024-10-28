@@ -13,7 +13,11 @@ document.getElementById('yesButton').addEventListener('click', function() {
     // Exibe a mensagem fofa
     cuteMessage.classList.remove('hidden');
     
-    setInterval(() => {
+    let intervalTime = 500; // Aumente o tempo inicial entre corações
+    const intervalDecrease = 20; // Quanto diminuir o intervalo a cada vez
+    const minIntervalTime = 200; // Aumente o tempo mínimo entre corações
+
+    const createHearts = () => {
         const heart = document.createElement('div');
         heart.className = 'heart';
         heart.style.left = `${Math.random() * 100}%`;
@@ -21,5 +25,15 @@ document.getElementById('yesButton').addEventListener('click', function() {
         heart.innerHTML = '❤️';
         heartsContainer.appendChild(heart);
         setTimeout(() => heart.remove(), 2000);
-    }, 300); // Cria um coração a cada 300 milissegundos
+    };
+
+    const increaseHeartFrequency = () => {
+        createHearts();
+        if (intervalTime > minIntervalTime) {
+            intervalTime -= intervalDecrease;
+        }
+        setTimeout(increaseHeartFrequency, intervalTime);
+    };
+
+    increaseHeartFrequency();
 });

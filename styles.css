@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap'); /* Importa a fonte Pacifico do Google Fonts */
+
 body {
     display: flex;
     justify-content: center;
@@ -107,9 +109,10 @@ button {
 
 #cuteMessage {
     margin-top: 20px;
-    font-size: 18px;
+    font-size: 32px; /* Reduza o tamanho da fonte aqui */
     color: #ff6b6b;
     animation: fadeIn 1s ease-in-out;
+    text-align: center; /* Centraliza o texto */
 }
 
 @keyframes fadeIn {
@@ -119,4 +122,14 @@ button {
     to {
         opacity: 1;
     }
+}
+
+#signature {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    color: #333;
+    opacity: 0.7;
+    font-family: 'Pacifico', cursive; /* Define a fonte Pacifico */
 }
