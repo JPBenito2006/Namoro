@@ -292,3 +292,7 @@ body.blackout {
     background-color: #000 !important; /* Fundo preto */
     transition: background-color 0.5s ease; /* Transição suave */
 }
+
+body.night-mode #signature {
+    color: #ffffff !important; /* Cor branca para a assinatura no modo noturno */
+}
