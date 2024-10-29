@@ -13,6 +13,9 @@ document.getElementById('yesButton').addEventListener('click', function() {
     // Exibe a mensagem fofa
     cuteMessage.classList.remove('hidden');
     
+    // Adiciona a classe 'blackout' para mudar o fundo para preto
+    document.body.classList.add('blackout');
+    
     let intervalTime = 500; // Aumente o tempo inicial entre corações
     const intervalDecrease = 20; // Quanto diminuir o intervalo a cada vez
     const minIntervalTime = 200; // Aumente o tempo mínimo entre corações
@@ -36,4 +39,9 @@ document.getElementById('yesButton').addEventListener('click', function() {
     };
 
     increaseHeartFrequency();
+});
+
+document.getElementById('toggle').addEventListener('change', function() {
+    document.body.classList.toggle('night-mode');
+    document.getElementById('heartsContainer').classList.toggle('night-mode');
 });

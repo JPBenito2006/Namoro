@@ -33,6 +33,16 @@ body::after {
     transform: rotate(30deg);
 }
 
+body.night-mode::before,
+body.night-mode::after {
+    content: '❤️';
+    position: absolute;
+    font-size: 200px; /* Tamanho dos corações gigantes */
+    opacity: 0.1; /* Transparência para não distrair do conteúdo principal */
+    pointer-events: none; /* Para não interferir com a interação do usuário */
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff; /* Efeito de LED rosa no modo noturno */
+}
+
 .container {
     text-align: center;
     background: rgba(255, 255, 255, 0.8);
@@ -109,10 +119,10 @@ button {
 
 #cuteMessage {
     margin-top: 20px;
-    font-size: 32px; /* Reduza o tamanho da fonte aqui */
-    color: #ff6b6b;
+    font-size: 32px;
+    color: #ff6b6b; /* Cor rosa */
     animation: fadeIn 1s ease-in-out;
-    text-align: center; /* Centraliza o texto */
+    text-align: center;
 }
 
 @keyframes fadeIn {
@@ -124,6 +134,10 @@ button {
     }
 }
 
+body.night-mode #cuteMessage {
+    color: #ff6b6b !important; /* Mantenha a cor rosa no modo noturno */
+}
+
 #signature {
     position: fixed;
     bottom: 10px;
@@ -132,4 +146,149 @@ button {
     color: #333;
     opacity: 0.7;
     font-family: 'Pacifico', cursive; /* Define a fonte Pacifico */
+}
+
+body.night-mode {
+    background: linear-gradient(135deg, #000000 0%, #a30288 100%) !important; /* Cores escuras para o modo noturno */
+    transition: background 0.5s ease; /* Transição suave */
+}
+
+body.night-mode .container {
+    background: rgba(255, 255, 255, 0.8) !important; /* Mantenha o container branco */
+}
+
+
+body.night-mode::before,
+body.night-mode::after {
+    content: '❤️';
+    position: absolute;
+    font-size: 200px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+#heartsContainer.night-mode {
+    /* Estilos para corações com efeito de LED */
+    animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
+    }
+    to {
+        text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+    }
+}
+
+#heartsContainer.night-mode .heart {
+    color: #ff00ff; /* Corações rosa */
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff; /* Efeito de LED */
+}
+
+#toggleNightMode {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#toggleNightMode:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Efeito de luz */
+}
+
+#toggleNightMode .sun,
+#toggleNightMode .moon {
+    transition: opacity 0.3s ease;
+    margin: 0 5px; /* Espaçamento entre os ícones */
+}
+
+body.night-mode #toggleNightMode .sun {
+    opacity: 0.3; /* Reduz a opacidade em vez de torná-lo invisível */
+}
+
+body:not(.night-mode) #toggleNightMode .moon {
+    opacity: 0.3; /* Reduz a opacidade em vez de torná-lo invisível */
+}
+
+/* From Uiverse.io by rishichawda */ 
+#theme-toggle-button {
+    font-size: 14px; /* Diminui o tamanho do botão */
+    position: fixed; /* Posiciona o botão de forma fixa */
+    top: 10px; /* Distância do topo */
+    right: 10px; /* Distância da direita */
+    display: inline-block;
+    width: 5em; /* Ajusta a largura do botão */
+    cursor: pointer;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
+#toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+#container,
+#patches,
+#stars,
+#button,
+#sun,
+#moon,
+#cloud {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.25s;
+}
+
+#toggle:checked + svg #container {
+    fill: #2b4360;
+}
+
+#toggle:checked + svg #button {
+    transform: translate(28px, 2.333px);
+}
+
+#sun {
+    opacity: 1;
+}
+
+#toggle:checked + svg #sun {
+    opacity: 0;
+}
+
+#moon {
+    opacity: 0;
+}
+
+#toggle:checked + svg #moon {
+    opacity: 1;
+}
+
+#cloud {
+    opacity: 1;
+}
+
+#toggle:checked + svg #cloud {
+    opacity: 0;
+}
+
+#stars {
+    opacity: 0;
+}
+
+#toggle:checked + svg #stars {
+    opacity: 1;
+}
+
+body.blackout {
+    background-color: #000 !important; /* Fundo preto */
+    transition: background-color 0.5s ease; /* Transição suave */
 }
